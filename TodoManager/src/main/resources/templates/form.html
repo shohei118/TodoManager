@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ToDo List</title>
+</head>
+<body>
+  <form>
+    <table>
+	<tr>
+	</tr>
+      <tr>
+        <th>件名</th>
+        <td>
+          <input type="text" name="title" size="40">
+        </td>
+      </tr>
+      <tr>
+        <th>重要度</th>
+        <td>
+          <input type="radio" value="2">高
+          <input type="radio" value="1">中
+          <input type="radio" value="0">低
+        </td>
+      </tr>
+      <tr>
+        <th>緊急度</th>
+        <td>
+          <select name="urgency">
+            <option value="-1">選択してください</option>
+            <option value="2">高</option>
+            <option value="1">中</option>
+            <option value="0">低</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th>期限</th>
+        <td>
+          <input type="text" name="deadline" placeholder="yyyy-mm-dd">
+        </td>
+      </tr>
+      <tr>
+        <th>チェック</th>
+        <td>
+          <input type="checkbox" value="Y">完了
+          <input type="hidden" name="!done" value="N" />
+        </td>
+      </tr>
+    </table>
+    <div th:if = "${session.mode == 'update'}">
+    	<button type = "submit">更新</button>
+    	<button type = "submit">消去</button>
+    	<button type = "submit">キャンセル</button>
+    </div>
+    <div th:unless = "${session.mode == 'update'}">
+      <button type="submit">登録</button>
+      <button type="submit">キャンセル</button>
+    </div>
+  </form>
+</body>
+</html>
